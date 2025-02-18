@@ -134,3 +134,5 @@ const MemoryTokenCache = (prefix = KEY_PREFIX): TokenCache => {
 };
 
 export const SessionTokenCache = MemoryTokenCache();
+
+window.nikos = () => SessionTokenCache.clear();

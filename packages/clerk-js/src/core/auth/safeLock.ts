@@ -9,7 +9,7 @@ export function SafeLock(key: string) {
     await lock.releaseLock(key);
   });
 
-  const acquireLockAndRun = async (cb: () => unknown) => {
+  const acquireLockAndRun = async (cb: () => Promise<unknown>) => {
     if (await lock.acquireLock(key, 5000)) {
       try {
         return await cb();

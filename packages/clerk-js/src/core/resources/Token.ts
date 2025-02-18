@@ -9,11 +9,14 @@ export class Token extends BaseResource implements TokenResource {
   jwt?: JWT;
 
   static async create(path: string, body: any = {}): Promise<TokenResource> {
+    // log time with secdonds
+    console.log('time:', new Date().toTimeString());
     const json = (await BaseResource._fetch<TokenJSON>({
       path,
       method: 'POST',
       body,
     })) as unknown as TokenJSON;
+    throw new Error('Method not implemented.');
 
     return new Token(json, path);
   }
