@@ -104,6 +104,7 @@ export function signedInAuthObject(
     sub: userId,
     fva,
     sts,
+    fea,
   } = sessionClaims;
   const apiClient = createBackendApiClient(authenticateContext);
   const getToken = createGetToken({
@@ -130,7 +131,7 @@ export function signedInAuthObject(
     orgPermissions,
     factorVerificationAge,
     getToken,
-    has: createCheckAuthorization({ orgId, orgRole, orgPermissions, userId, factorVerificationAge }),
+    has: createCheckAuthorization({ orgId, orgRole, orgPermissions, userId, factorVerificationAge, features: fea }),
     debug: createDebug({ ...authenticateContext, sessionToken }),
   };
 }

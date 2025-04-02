@@ -153,6 +153,7 @@ export function useDerivedAuth(authObject: any): UseAuthReturn {
         orgRole,
         orgPermissions,
         factorVerificationAge,
+        features: '',
       })(params);
     },
     [userId, factorVerificationAge, orgId, orgRole, orgPermissions],
