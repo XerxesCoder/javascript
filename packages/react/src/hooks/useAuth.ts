@@ -153,10 +153,11 @@ export function useDerivedAuth(authObject: any): UseAuthReturn {
         orgRole,
         orgPermissions,
         factorVerificationAge,
-        features: '',
+        // TODO: get features from authObject
+        features: 'testfeature',
       })(params);
     },
-    [userId, factorVerificationAge, orgId, orgRole, orgPermissions],
+    [has, userId, factorVerificationAge, orgId, orgRole, orgPermissions],
   );
 
   if (sessionId === undefined && userId === undefined) {
