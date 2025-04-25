@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-restricted-imports
-import { matchers } from '@emotion/jest';
+import { matchers } from '@emotion/vitest';
 import type { RenderOptions } from '@testing-library/react';
 import { render as _render } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
-import type { SpyInstance } from 'vitest';
+import { afterAll, beforeAll, describe, expect, vi, type SpyInstance } from 'vitest';
 
 expect.extend(matchers);
 
