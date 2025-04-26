@@ -134,7 +134,7 @@ describe('PlainInput', () => {
 
     await userEvent.click(getByRole('button', { name: /set error/i }));
 
-    expect(await findByText(/some error/i)).toBeInTheDocument();
+    expect(await findByText(/Some Error/i)).toBeInTheDocument();
 
     const label = getByLabelText(/some label/i);
     expect(label).toHaveAttribute('aria-invalid', 'true');
