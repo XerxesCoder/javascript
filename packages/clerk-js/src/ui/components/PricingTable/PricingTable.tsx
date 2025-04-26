@@ -1,4 +1,4 @@
-import { useClerk, useOrganization } from '@clerk/shared/react';
+import { useClerk, useOrganization, useUser } from '@clerk/shared/react';
 import type {
   __experimental_CommercePlanResource,
   __experimental_CommerceSubscriptionPlanPeriod,
@@ -31,24 +31,25 @@ const PricingTable = (props: __experimental_PricingTableProps) => {
 
   const { __experimental_commerce } = useClerk();
 
+  const { user } = useUser();
   useFetch(
-    __experimental_commerce?.getPaymentSources,
+    user ? __experimental_commerce?.getPaymentSources : undefined,
     {
       ...(subscriberType === 'org' ? { orgId: organization?.id } : {}),
     },
     undefined,
-    'commerce-payment-sources',
+    `commerce-payment-sources-${user?.id}`,
   );
 
   return (
     <>
-      {mode !== 'modal' && props.layout === 'matrix' ? (
+      {mode !== 'modal' && (props as any).layout === 'matrix' ? (
         <PricingTableMatrix
           plans={plans || []}
           planPeriod={planPeriod}
           setPlanPeriod={setPlanPeriod}
           onSelect={selectPlan}
-          highlightedPlan={props.highlightPlan}
+          highlightedPlan={(props as any).highlightPlan}
         />
       ) : (
         <PricingTableDefault
