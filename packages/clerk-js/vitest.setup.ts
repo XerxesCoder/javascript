@@ -2,6 +2,7 @@ import { afterAll, beforeAll, vi } from 'vitest';
 import crypto from 'node:crypto';
 import { TextDecoder, TextEncoder } from 'node:util';
 import '@testing-library/jest-dom/vitest'; // Use Vitest extensions for jest-dom
+import React from 'react'; // Import React for the mock component
 
 // --- Setup from root jest.setup-after-env.ts ---
 

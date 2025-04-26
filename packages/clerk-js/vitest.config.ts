@@ -68,7 +68,11 @@ export default defineConfig({
     // tsconfig: 'tsconfig.test.json'
   },
   // Optional: Replicate module resolution if needed
-  // resolve: {
-  //   modules: ['node_modules', 'src'], // Replaces jest.moduleDirectories
-  // },
+  resolve: {
+    // Add alias for SVG imports to point to the mock
+    alias: {
+      '.svg$': './src/__tests__/mocks/svgMock.tsx', // Use regex to match any path ending in .svg
+    },
+    // modules: ['node_modules', 'src'], // Replaces jest.moduleDirectories (Uncomment if needed)
+  },
 });
